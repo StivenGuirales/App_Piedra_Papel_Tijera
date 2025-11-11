@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, Papel o Tijera</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div id="loginScreen" class="screen active">
+        <div class="login-container">
+            <h1>🎮 Piedra, Papel o Tijera</h1>
+            <div class="login-form">
+                <input type="text" id="username" placeholder="Usuario" />
+                <input type="password" id="password" placeholder="Contraseña" />
+                <button onclick="login()">Iniciar Sesión</button>
+                <p id="loginError" class="error"></p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="gameScreen" class="screen">
+        <div class="game-container">
+            
+            <div class="left-panel">
+                <button onclick="toggleInstructions()" class="btn-secondary">
+                    ❓ Instrucciones
+                </button>
+                <div id="instructionsPanel" class="instructions-panel hidden">
+                    <h3>Cómo jugar:</h3>
+                    <p>🪨 Piedra gana a Tijera</p>
+                    <p>📄 Papel gana a Piedra</p>
+                    <p>✂️ Tijera gana a Papel</p>
+                    <p><br>Elige tu jugada haciendo clic en los botones de abajo.</p>
+                </div>
+            </div>
+
+            
+            <div class="center-panel">
+                <div class="user-info">
+                    <h2>Jugador: <span id="currentUser"></span></h2>
+                    <button onclick="logout()" class="btn-logout">Cerrar Sesión</button>
+                </div>
+
+                <div class="game-area">
+                    <div class="choices">
+                        <div class="choice-box">
+                            <h3>Tú</h3>
+                            <div id="playerChoice" class="choice-display">❓</div>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="choice-box">
+                            <h3>Computadora</h3>
+                            <div id="computerChoice" class="choice-display">❓</div>
+                        </div>
+                    </div>
+
+                    <div id="resultMessage" class="result-message"></div>
+
+                    <div class="buttons">
+                        <button onclick="play('piedra')" class="btn-game">🪨 Piedra</button>
+                        <button onclick="play('papel')" class="btn-game">📄 Papel</button>
+                        <button onclick="play('tijera')" class="btn-game">✂️ Tijera</button>
+                    </div>
+
+                    <button onclick="resetGame()" class="btn-reset" id="resetBtn" style="display:none;">
+                        🔄 Jugar de Nuevo
+                    </button>
+                </div>
+            </div>
+
+            
+            <div class="right-panel">
+                <button onclick="toggleStats()" class="btn-secondary">
+                    📊 Estadísticas
+                </button>
+                <div id="statsPanel" class="stats-panel hidden">
+                    <h3>Tus Resultados:</h3>
+                    <p>🏆 Victorias: <span id="wins">0</span></p>
+                    <p>😢 Derrotas: <span id="losses">0</span></p>
+                    <p>🤝 Empates: <span id="ties">0</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
